@@ -1,0 +1,23 @@
+import sqlite3
+from aiogram import Bot
+from aiogram.dispatcher import Dispatcher
+import os
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
+
+
+storage = MemoryStorage()
+
+bot = Bot(token='')
+dp = Dispatcher(bot, storage=storage)
+
+kb_menus = {
+    "BMW": "bmw",
+    "Mercedes": "mercedes",
+    "Porsche" : "porsche",
+    "Ferrari": "ferrari",
+    "Rolls-Royce": "rolls",
+    "Мотоциклы": "motorcycles",
+}
+
+conn = sqlite3.connect('resources/base.db')
+cursor = conn.cursor()
